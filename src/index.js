@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './context/authcontext';
+import { AuthProvider } from './context/AuthContext';
+import { PostProvider } from './context/PostContext';
 import reportWebVitals from './reportWebVitals';
 import { makeServer } from "./server";
 
@@ -14,9 +15,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider>
+    <PostProvider>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </PostProvider>
     </AuthProvider>
   </React.StrictMode>
 );

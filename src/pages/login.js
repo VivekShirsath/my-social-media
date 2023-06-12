@@ -1,14 +1,16 @@
-import { NavLink } from 'react-router-dom';
-import {useState} from 'react';
-import { useAuth } from '../context/authcontext';
+import { NavLink, useNavigate } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import { useAuth } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 export const Login = () => {
-    const {logInHandler} = useAuth();
+    const {logInHandler,token} = useAuth();
     const [loginData,setLoginData] = useState({
       username : "",
       password : "",
     })
     const testData = {username : "vivek18",password:"vivek123"}
+    const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +21,12 @@ export const Login = () => {
      e.preventDefault(); 
      logInHandler(data.username,data.password)      
     }
+
+    useEffect(() => {
+      if (token) {
+        navigate("/");
+      }
+    })
 
     return(
         <div className="bg-primary_bg flex justify-center w-screen h-screen items-center text-lg">
