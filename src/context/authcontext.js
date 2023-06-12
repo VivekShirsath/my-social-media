@@ -7,7 +7,7 @@ export const AuthContext = createContext(null);
 export const AuthProvider = ({children}) => {
     const storage = JSON?.parse(localStorage?.getItem('loginDetails'));
     const [token,setToken] = useState(storage?.token);
-    const [user,setUser] = useState(storage?.user);
+    const [loggedUser,setLoggedUser] = useState(storage?.user);
 
     const signUpHandler = async({ firstname,lastname,
     email,
@@ -27,7 +27,7 @@ export const AuthProvider = ({children}) => {
                 user : data.createdUser,
             }));
             setToken(data.encodedToken);
-            setUser(data.createdUser);
+            setLoggedUser(data.createdUser);
         }
       
     }
@@ -37,7 +37,6 @@ export const AuthProvider = ({children}) => {
 }
 
     const logInHandler = async(username,password) => {
-        console.log("jj");
         try{
             const {status,data} = await axios.post("/api/auth/login",{
                 username,
@@ -50,7 +49,7 @@ export const AuthProvider = ({children}) => {
                     user : data.foundUser,
                 }));
                 setToken(data.encodedToken);
-                setUser(data.foundUser);
+                setLoggedUser(data.foundUser);
             }
         }
         catch(error){
@@ -58,7 +57,7 @@ export const AuthProvider = ({children}) => {
         }
     }
     return(
-        <AuthContext.Provider value={{signUpHandler,token,user,logInHandler,setToken,setUser}}>
+        <AuthContext.Provider value={{signUpHandler,token,loggedUser,logInHandler,setToken}}>
             {children}
         </AuthContext.Provider>
     )

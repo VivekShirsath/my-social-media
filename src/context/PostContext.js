@@ -1,7 +1,6 @@
 import { createContext,useContext, useReducer } from "react";
 import { reducer } from "../components/reducer";
 import axios from "axios";
-import { useAuth } from "./AuthContext";
 
 export const PostContext = createContext(null);
 
@@ -10,7 +9,6 @@ export const PostProvider = ({children}) => {
     const [state,dispatch] = useReducer(reducer,{
         posts : [],
     })
-    const {token} = useAuth();
 
     const getPosts = async() => {
         try{

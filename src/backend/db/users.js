@@ -19,6 +19,12 @@ export const users = [
     firstName: "Mahesh",
     lastName: "Jogdand",
     username: "mahesh10",
+    }],
+    following: [{
+     _id: 2,
+    firstName: "Mahesh",
+    lastName: "Jogdand",
+    username: "mahesh10",
     }]
   },
   {
@@ -36,6 +42,15 @@ export const users = [
     lastName: "Chaudhary",
     username: "saurabh45",
     password: "saurabh",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: 4,
+    firstName: "Sara",
+    lastName: "Williams",
+    username: "sara22",
+    password: "sara@11",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

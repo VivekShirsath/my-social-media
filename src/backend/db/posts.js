@@ -16,6 +16,8 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    firstName: "Vivek",
+    lastName: "Shirsath",
     username: "vivek18",
     createdAt: "5 June,2023",
     updatedAt: formatDate(),
@@ -25,10 +27,17 @@ export const posts = [
     content:
       "Big UCL Coming up on Sunday,will Pep get the treble?",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: [{
+        username:"sara22"
+      },
+      {
+        username:"vivek18"
+      }],
       dislikedBy: [],
     },
+    firstName: "Vivek",
+    lastName: "Shirsath",
     username: "vivek18",
     createdAt: "1 June,2023",
     updatedAt: formatDate(),
@@ -42,6 +51,8 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    firstName: "Vivek",
+    lastName: "Shirsath",
     username: "vivek18",
     createdAt: "10 March,2023",
     updatedAt: formatDate(),
@@ -51,10 +62,14 @@ export const posts = [
     content:
       "Life is very small to regret,travel more and enjoy.",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [{
+        username : "vivek18"
+      }],
       dislikedBy: [],
     },
+    firstName: "Mahesh",
+    lastName: "Jogdand",
     username: "mahesh10",
     createdAt: "5 May,2023",
     updatedAt: formatDate(),
@@ -68,7 +83,9 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    username: "mahesh10",
+    firstName: "Sara",
+    lastName: "Williams",
+    username: "sara22",
     createdAt: "11 January,2023",
     updatedAt: formatDate(),
   },
@@ -77,10 +94,22 @@ export const posts = [
     content:
       "Watching FC Barcelona play live is the one of the things in my bucketlist.",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 3,
+      likedBy: [
+        {
+          username:"sara22"
+        },
+        {
+          username:"vivek18"
+        },
+        {
+          username : "saurabh45"
+        }
+      ],
       dislikedBy: [],
     },
+    firstName: "Mahesh",
+    lastName: "Jogdand",
     username: "mahesh10",
     createdAt: "16 March,2023",
     updatedAt: formatDate(),
@@ -94,6 +123,8 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    firstName: "Saurabh",
+    lastName: "Chaudhary",
     username: "saurabh45",
     createdAt: "29 May,2023",
     updatedAt: formatDate(),
@@ -103,10 +134,14 @@ export const posts = [
     content:
       "Which method of learning do you prefer ? Videos or documentation?",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [{
+        username : "mahesh10"
+      }],
       dislikedBy: [],
     },
+    firstName: "Saurabh",
+    lastName: "Chaudhary",
     username: "saurabh45",
     createdAt: "22 January,2023",
     updatedAt: formatDate(),

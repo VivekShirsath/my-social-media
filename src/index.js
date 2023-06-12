@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { PostProvider } from './context/PostContext';
+import { UserProvider } from './context/UserContext';
 import reportWebVitals from './reportWebVitals';
 import { makeServer } from "./server";
 
@@ -16,9 +17,11 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
     <PostProvider>
+    <UserProvider>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </UserProvider>
     </PostProvider>
     </AuthProvider>
   </React.StrictMode>
