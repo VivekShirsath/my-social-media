@@ -1,5 +1,6 @@
 
 import { createContext,useContext,useState} from "react";
+import { useAuth } from "./AuthContext";
 import axios from "axios";
 
 export const UserContext = createContext(null);
@@ -7,6 +8,7 @@ export const UserContext = createContext(null);
 export const UserProvider = ({children}) => {
 
     const [users,setUsers] = useState([]);
+    const {loggedUser} = useAuth();
 
     const getUsers = async() => {
         try{
