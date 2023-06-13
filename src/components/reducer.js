@@ -13,6 +13,13 @@ export const reducer = (state,action) => {
                 filters : action.payload,
             }
         }
+
+        case "Add_Post":{
+            return{
+                ...state,
+                posts: action.payload,
+            }
+        }
         default:{
             
         }

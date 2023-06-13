@@ -5,16 +5,17 @@ import { useUser } from "../context/UserContext";
 import { useAuth } from "../context/AuthContext";
 import {Card} from "./Card";
 import { filterLogic } from "../helpers";
+import { getPosts } from "../services";
 
 export const Post = () => {
-    const {posts,getPosts,filters} = usePost();
+    const {posts,filters,dispatch} = usePost();
     const [loading,setisLoading] = useState(true);
     const {getUsers} = useUser();
     const {loggedUser} = useAuth();
 
-    
+
     useEffect(() => {
-        getPosts();
+        getPosts(dispatch);
         getUsers();
         setisLoading(false);
     },[]);

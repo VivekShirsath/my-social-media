@@ -46,6 +46,7 @@ export function makeServer({ environment = "development" } = {}) {
           followers: [],
           following: [],
           bookmarks: [],
+          imageId : "",
           ...item,
         })
       );
