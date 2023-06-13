@@ -7,6 +7,12 @@ export const reducer = (state,action) => {
                 posts : action.payload,
             }
         }
+        case "Filter":{
+            return{
+                ...state,
+                filters : action.payload,
+            }
+        }
         default:{
             
         }

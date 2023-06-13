@@ -8,6 +8,7 @@ export const PostProvider = ({children}) => {
 
     const [state,dispatch] = useReducer(reducer,{
         posts : [],
+        filters : "",
     })
 
     const getPosts = async() => {
@@ -21,7 +22,7 @@ export const PostProvider = ({children}) => {
     }
     
     return(
-        <PostContext.Provider value={{...state,getPosts}}>
+        <PostContext.Provider value={{...state,getPosts,dispatch}}>
             {children}
         </PostContext.Provider>
     )

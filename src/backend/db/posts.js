@@ -19,8 +19,9 @@ export const posts = [
     firstName: "Vivek",
     lastName: "Shirsath",
     username: "vivek18",
-    createdAt: "5 June,2023",
+    createdAt: "5 January,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
   },
   {
     _id: uuid(),
@@ -41,6 +42,7 @@ export const posts = [
     username: "vivek18",
     createdAt: "1 June,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
   },
   {
     _id: uuid(),
@@ -56,6 +58,7 @@ export const posts = [
     username: "vivek18",
     createdAt: "10 March,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
   },
   {
     _id: uuid(),
@@ -73,6 +76,7 @@ export const posts = [
     username: "mahesh10",
     createdAt: "5 May,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/4140/4140048.png",
   },
   {
     _id: uuid(),
@@ -88,6 +92,7 @@ export const posts = [
     username: "sara22",
     createdAt: "11 January,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/4140/4140051.png",
   },
   {
     _id: uuid(),
@@ -113,6 +118,7 @@ export const posts = [
     username: "mahesh10",
     createdAt: "16 March,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/4140/4140048.png",
   },
   {
     _id: uuid(),
@@ -128,6 +134,7 @@ export const posts = [
     username: "saurabh45",
     createdAt: "29 May,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/924/924874.png",
   },
   {
     _id: uuid(),
@@ -145,5 +152,6 @@ export const posts = [
     username: "saurabh45",
     createdAt: "22 January,2023",
     updatedAt: formatDate(),
+    imageId : "https://cdn-icons-png.flaticon.com/128/924/924874.png",
   },
 ];
