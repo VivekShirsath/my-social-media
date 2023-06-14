@@ -15,6 +15,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+    bookmarks: [],
     followers: [{
       _id: 2,
     firstName: "Mahesh",
@@ -37,6 +38,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/4140/4140048.png",
+    bookmarks: [],
   },
   {
     _id: 3,
@@ -47,6 +49,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/924/924874.png",
+    bookmarks: [],
   },
   {
     _id: 4,
@@ -57,5 +60,6 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/4140/4140051.png",
+    bookmarks: [],
   },
 ];

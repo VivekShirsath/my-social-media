@@ -20,6 +20,20 @@ export const reducer = (state,action) => {
                 posts: action.payload,
             }
         }
+
+        case "Like_Post":{
+            return{
+                ...state,
+                posts: action.payload,
+            }
+        }
+
+        case "Dislike_Post":{
+            return{
+                ...state,
+                posts:action.payload,
+            }
+        }
         default:{
             
         }

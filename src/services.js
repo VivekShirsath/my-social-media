@@ -10,7 +10,7 @@ export const getPosts = async(dispatch) => {
     }
 }
 
-export const addPosts = async(post,token,dispatch,firstName,lastName,imageId) => {
+ export const addPosts = async(post,token,dispatch,firstName,lastName,imageId) => {
   
     try{
         const {data} = await axios.post("/api/posts",
@@ -28,10 +28,48 @@ export const addPosts = async(post,token,dispatch,firstName,lastName,imageId) =>
             }
         },
         )
-        console.log(data.posts);
         dispatch({type:"Add_Post",payload:data.posts});
     }
     catch(error){
         console.log(error);
     }
 }
+
+export const likePost = async(token,dispatch,_id) => {
+    try{
+        const data = await fetch(`/api/posts/like/${_id}`,
+        {
+            method : 'POST',
+            headers: {
+              authorization: token,
+            },
+          }
+        )
+        const result = await data.json();
+        console.log(result)
+       dispatch({type:"Like_Post",payload:result.posts})
+     }
+    catch(error){
+        console.log(error);
+    }
+ }
+
+ export const disLikePost = async(token,dispatch,_id) => {
+    try{
+        const data = await fetch(`/api/posts/dislike/${_id}`,
+        {
+            method : 'POST',
+            headers: {
+              authorization: token,
+            },
+          }
+        )
+        const result = await data.json();
+        console.log(result);
+       dispatch({type:"Dislike_Post",payload:result.posts})
+     }
+    catch(error){
+        console.log(error);
+    }
+ }
+

@@ -30,10 +30,12 @@ export const posts = [
     likes: {
       likeCount: 2,
       likedBy: [{
-        username:"sara22"
+        username:"sara22",
+        _id: 4,
       },
       {
-        username:"vivek18"
+        username:"vivek18",
+        _id: 1,
       }],
       dislikedBy: [],
     },
@@ -67,7 +69,8 @@ export const posts = [
     likes: {
       likeCount: 1,
       likedBy: [{
-        username : "vivek18"
+        username : "vivek18",
+        _id : 1,
       }],
       dislikedBy: [],
     },
@@ -102,13 +105,16 @@ export const posts = [
       likeCount: 3,
       likedBy: [
         {
-          username:"sara22"
+          username:"sara22",
+          _id : 4,
         },
         {
-          username:"vivek18"
+          username:"vivek18",
+          _id: 1,
         },
         {
-          username : "saurabh45"
+          username : "saurabh45",
+          _id : 3,
         }
       ],
       dislikedBy: [],
@@ -143,7 +149,8 @@ export const posts = [
     likes: {
       likeCount: 1,
       likedBy: [{
-        username : "mahesh10"
+        username : "mahesh10",
+        _id : 2,
       }],
       dislikedBy: [],
     },
