@@ -73,3 +73,38 @@ export const likePost = async(token,dispatch,_id) => {
     }
  }
 
+ export const bookmarkPost = async(token,dispatch,_id,loggedUser,setLoggedUser) => {
+    try{
+        const data = await fetch(`/api/users/bookmark/${_id}`,
+        {
+            method : 'POST',
+            headers:{
+                authorization:token,
+            }
+        })
+        const result = await data.json();
+        setLoggedUser({...loggedUser,bookmarks:result.bookmarks})
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
+ export const removeBookmark = async(token,dispatch,_id,loggedUser,setLoggedUser) => {
+    try{
+        const data = await fetch(`/api/users/remove-bookmark/${_id}`,
+        {
+            method : 'POST',
+            headers:{
+                authorization:token,
+            }
+        })
+        const result = await data.json();
+        setLoggedUser({...loggedUser,bookmarks:result.bookmarks})
+    }
+    catch(error){
+        console.log(error)
+    }
+ }
+
+

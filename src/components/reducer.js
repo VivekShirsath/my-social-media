@@ -34,6 +34,13 @@ export const reducer = (state,action) => {
                 posts:action.payload,
             }
         }
+
+        case "BookMark":{
+            return{
+                ...state,
+                posts:action.payload,
+            }
+        }
         default:{
             
         }

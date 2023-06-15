@@ -6,7 +6,7 @@ export const Filter = () => {
         <div className="flex justify-around p-2 text-lg">
         <button className="rounded-md text-secondary_bg bg-primary_bg p-1 
         hover:bg-secondary_bg hover:text-primary_bg 
-        hover:border-2 focus:bg-cta_color"
+        hover:border-2 active:bg-cta_color"
         onClick={() => dispatch({type : "Filter",payload : "Trending"})}>
             Trending
             </button>
