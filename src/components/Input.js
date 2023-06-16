@@ -16,7 +16,7 @@ export const Input = () => {
 
     return(
         <>
-        <h4 className="text-2xl text-color p-4 text-center">Home</h4>
+        <h4 className="text-2xl text-color p-4 text-center sticky top-0 backdrop-blur-sm z-50">Home</h4>
         <div className="flex relative p-2 items-center">
         <input type="text" className = "p-4 rounded-md text-secondary_bg w-full"
         placeholder="What's happening?" 

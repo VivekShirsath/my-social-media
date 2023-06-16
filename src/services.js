@@ -144,7 +144,6 @@ export const likePost = async(token,dispatch,_id) => {
  }
 
  export const unfollowUser = async(token,user,updateUsers) => {
-    console.log(user[0]._id);
     try{
         const result = await fetch(
             `/api/users/unfollow/${user[0]._id}`,
@@ -154,6 +153,23 @@ export const likePost = async(token,dispatch,_id) => {
              headers: { authorization: token } ,
             }
           );
+        const data = await result.json();
+        updateUsers(data);
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
+ export const followUser = async(token,id,updateUsers) => {
+    try{
+        const result = await fetch(`/api/users/follow/${id}`,
+        {
+            method : 'POST',
+            body:{},
+             headers: { authorization: token } ,
+            }
+        )
         const data = await result.json();
         updateUsers(data);
     }
