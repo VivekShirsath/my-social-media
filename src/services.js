@@ -46,7 +46,6 @@ export const likePost = async(token,dispatch,_id) => {
           }
         )
         const result = await data.json();
-        console.log(result)
        dispatch({type:"Like_Post",payload:result.posts})
      }
     catch(error){
@@ -65,7 +64,6 @@ export const likePost = async(token,dispatch,_id) => {
           }
         )
         const result = await data.json();
-        console.log(result);
        dispatch({type:"Dislike_Post",payload:result.posts})
      }
     catch(error){
@@ -104,6 +102,43 @@ export const likePost = async(token,dispatch,_id) => {
     }
     catch(error){
         console.log(error)
+    }
+ }
+
+ export const editPost = async(token,dispatch,id,data) => {
+    try{
+        const result = await axios.post(`/api/posts/edit/${id}`,
+
+        {
+            postData: {
+                content : data,
+            }
+        },
+        {
+            headers:{
+                authorization: token,
+            }
+        },)
+        dispatch({type:"Edit_Post",payload:result.data.posts})
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
+ export const deletePost = async(token,dispatch,id) =>{
+    try{
+        const result = await axios.delete(`api/posts/${id}`,
+        {
+            headers:{
+                authorization: token,
+            }
+        },
+        )
+        dispatch({type:"Delete_Post",payload:result.data.posts})
+    }
+    catch(error){
+        console.log(error);
     }
  }
 

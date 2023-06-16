@@ -41,6 +41,18 @@ export const reducer = (state,action) => {
                 posts:action.payload,
             }
         }
+        case "Edit_Post":{
+            return{
+                ...state,
+                posts:action.payload,
+            }
+        }
+        case "Delete_Post":{
+            return{
+                ...state,
+                posts:action.payload,
+            }
+        }
         default:{
             
         }
