@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import {useAuth} from '../context/AuthContext';
 import { usePost } from '../context/PostContext';
-import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost} from '../services';
+import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost,unfollowUser} from '../services';
+import { useUser } from '../context/UserContext';
 
 export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,imageId}) => {
     const [clicked,setClicked] = useState(false);
@@ -11,6 +12,7 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
     const {dispatch} = usePost();
     const [isModalOpen,setModalOpen] = useState(false);
     const [editedPost,setEditedPost] = useState(content);
+    const {users,updateUsers} = useUser();
 
     const isPostLiked = (likes) => likes?.likedBy?.find(({username}) => username===loggedUser.username)
     const isBookmarked = (id) => loggedUser?.bookmarks?.find((unique) => unique === id);
@@ -29,6 +31,10 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
     const handleDelete = () => {
         setClicked(false);
         deletePost(token,dispatch,_id)
+    }
+    const handleUnFollow = () => {
+        const user = users?.filter?.((user) => user.username === username);
+        unfollowUser(token,user,updateUsers);
     }
     return(
         <div className="text-color flex  p-4 border-b-2 relative" >
@@ -52,7 +58,7 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                         <button onClick={() => handleDelete()}>Delete</button>
                         </>
                         :
-                        <button>Unfollow</button>
+                        <button onClick={() => handleUnFollow()}>Unfollow</button>
                        }
                 </div>
                 }

@@ -46,6 +46,7 @@ export const likePost = async(token,dispatch,_id) => {
           }
         )
         const result = await data.json();
+        console.log(result);
        dispatch({type:"Like_Post",payload:result.posts})
      }
     catch(error){
@@ -136,6 +137,25 @@ export const likePost = async(token,dispatch,_id) => {
         },
         )
         dispatch({type:"Delete_Post",payload:result.data.posts})
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
+ export const unfollowUser = async(token,user,updateUsers) => {
+    console.log(user[0]._id);
+    try{
+        const result = await fetch(
+            `/api/users/unfollow/${user[0]._id}`,
+            {
+            method : 'POST',
+            body:{},
+             headers: { authorization: token } ,
+            }
+          );
+        const data = await result.json();
+        updateUsers(data);
     }
     catch(error){
         console.log(error);
