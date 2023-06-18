@@ -72,7 +72,7 @@ export const likePost = async(token,dispatch,_id) => {
     }
  }
 
- export const bookmarkPost = async(token,dispatch,_id,loggedUser,setLoggedUser) => {
+ export const bookmarkPost = async(token,_id,updateUsers) => {
     try{
         const data = await fetch(`/api/users/bookmark/${_id}`,
         {
@@ -82,14 +82,14 @@ export const likePost = async(token,dispatch,_id) => {
             }
         })
         const result = await data.json();
-        setLoggedUser({...loggedUser,bookmarks:result.bookmarks})
+        updateUsers(result,"bookmark");
     }
     catch(error){
         console.log(error);
     }
  }
 
- export const removeBookmark = async(token,dispatch,_id,loggedUser,setLoggedUser) => {
+ export const removeBookmark = async(token,_id,updateUsers) => {
     try{
         const data = await fetch(`/api/users/remove-bookmark/${_id}`,
         {
@@ -99,7 +99,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
         })
         const result = await data.json();
-        setLoggedUser({...loggedUser,bookmarks:result.bookmarks})
+        updateUsers(result,"bookmark");
     }
     catch(error){
         console.log(error)
@@ -154,7 +154,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
           );
         const data = await result.json();
-        updateUsers(data);
+        updateUsers(data,"unfollow");
     }
     catch(error){
         console.log(error);
@@ -171,7 +171,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
         )
         const data = await result.json();
-        updateUsers(data);
+        updateUsers(data,"follow");
     }
     catch(error){
         console.log(error);

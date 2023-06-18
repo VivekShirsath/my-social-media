@@ -29,7 +29,7 @@ export const Login = () => {
     })
 
     return(
-        <div className="bg-primary_bg flex justify-center w-screen h-screen items-center text-lg">
+        <div className="bg-primary_bg flex justify-center w-screen h-screen items-center text-lg shadow-sm shadow-secondary_bg">
           <form className = "flex flex-col justify-center p-4 bg-secondary_bg items-center text-color rounded-lg gap-1"
            onSubmit={(e) => handleSubmit(loginData,e)}>
             <h4 className="p-1 text-2xl">Log In</h4>

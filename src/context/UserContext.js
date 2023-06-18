@@ -20,11 +20,19 @@ export const UserProvider = ({children}) => {
         }
     }
 
-    const updateUsers = (data) => {
-        const {user,followUser} = data;
-        const nonloggeduser = users.filter((val) => val.username !== user.username && val.username !== followUser.username);
-        setUsers([...nonloggeduser,user,followUser])
-        setLoggedUser(user);
+    const updateUsers = (data,type) => {
+        if(type !== "bookmark"){
+            const {user,followUser} = data;
+          const nonloggeduser = users.filter((val) => val.username !== user.username && val.username !== followUser.username);
+          setUsers([...nonloggeduser,user,followUser])
+         setLoggedUser(user);
+        }
+        else{
+            const nonloggeduser = users.filter((val) => val.username !== loggedUser.username);  
+            const user = {...loggedUser,bookmarks : data.bookmarks};
+            setUsers([user,...nonloggeduser])
+            setLoggedUser({...loggedUser,bookmarks:data.bookmarks})
+        }
     }
     console.log(users);
     return(

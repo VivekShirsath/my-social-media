@@ -1,6 +1,7 @@
 import {Routes,Route} from 'react-router-dom'
 import { Login } from './pages/login';
 import { Home } from './pages/Home';
+import { Explore } from './pages/Explore';
 import Mockman from "mockman-js";
 import { ProtectedRoute } from './components/ProtectedRoute';
 import './App.css';
@@ -13,6 +14,11 @@ function App() {
         <Route path = "/" element={
           <ProtectedRoute>
         <Home/>
+        </ProtectedRoute>
+        }/>
+        <Route path = "/explore" element={
+          <ProtectedRoute>
+        <Explore/>
         </ProtectedRoute>
         }/>
         <Route path = "/login" element={<Login/>}/>

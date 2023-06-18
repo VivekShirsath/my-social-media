@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {useAuth} from '../context/AuthContext';
 import { usePost } from '../context/PostContext';
-import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost,unfollowUser} from '../services';
+import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost,unfollowUser,followUser} from '../services';
 import { useUser } from '../context/UserContext';
 
 export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,imageId}) => {
@@ -36,6 +36,14 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
         const user = users?.filter?.((user) => user.username === username);
         unfollowUser(token,user,updateUsers);
     }
+
+    const handleFollow = () => {
+        const user = users?.filter?.((user) => user.username === username);
+        followUser(token,user[0]._id,updateUsers)
+    }
+
+    const notfollowedUsers  =users.filter(({username}) => loggedUser?.following?.every(user => user.username !== username)).filter((user => user.username !== loggedUser.username));
+    console.log(notfollowedUsers.some((user) => user.username === username))
     return(
         <div className="text-color flex  p-4 border-b-2 relative" >
             <div className="flex justify-around items-center">
@@ -58,6 +66,8 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                         <button onClick={() => handleDelete()}>Delete</button>
                         </>
                         :
+                        notfollowedUsers.find((user) => user.username === username) ?
+                        <button onClick={() => handleFollow()}>Follow</button> :
                         <button onClick={() => handleUnFollow()}>Unfollow</button>
                        }
                 </div>
@@ -86,12 +96,12 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
            {
                 !isBookmarked(_id) ?
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 ml-3"
-                onClick={() => bookmarkPost(token,dispatch,_id,loggedUser,setLoggedUser)}>
+                onClick={() => bookmarkPost(token,_id,updateUsers)}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                 </svg>
                 :
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 ml-3"
-                onClick = {() => removeBookmark(token,dispatch,_id,loggedUser,setLoggedUser)}>
+                onClick = {() => removeBookmark(token,_id,updateUsers)}>
                 <path fillRule="evenodd" d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z" clipRule="evenodd" />
                 </svg>
            }
