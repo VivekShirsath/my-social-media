@@ -2,6 +2,7 @@
 import { createContext,useContext,useState} from "react";
 import { useAuth } from "./AuthContext";
 import axios from "axios";
+import { useEffect } from "react";
 
 export const UserContext = createContext(null);
 
@@ -20,17 +21,27 @@ export const UserProvider = ({children}) => {
         }
     }
 
+    useEffect(() => {
+        getUsers();
+    },[])
+
     const updateUsers = (data,type) => {
         if(type !== "bookmark"){
             const {user,followUser} = data;
-          const nonloggeduser = users.filter((val) => val.username !== user.username && val.username !== followUser.username);
-          setUsers([...nonloggeduser,user,followUser])
-         setLoggedUser(user);
+        //   const nonloggeduser = users.filter((val) => val.username !== user.username && val.username !== followUser.username);
+        //   setUsers([...nonloggeduser,user,followUser])    
+        //  setLoggedUser(user);
+          const update = users.map((val) => val.username === user.username ?
+          {...val,following : user.following} : val).map((val) => val.username === followUser.username ?
+          {...val,followers : followUser.followers} : val);
+          setUsers(update);
+          setLoggedUser(user);
         }
         else{
-            const nonloggeduser = users.filter((val) => val.username !== loggedUser.username);  
-            const user = {...loggedUser,bookmarks : data.bookmarks};
-            setUsers([user,...nonloggeduser])
+            // const nonloggeduser = users.filter((val) => val.username !== loggedUser.username);  
+            // const user = {...loggedUser,bookmarks : data.bookmarks};
+            setUsers(users.map((user) => user.username === loggedUser.username ? 
+            {...user,bookmarks: data.bookmarks} : user));
             setLoggedUser({...loggedUser,bookmarks:data.bookmarks})
         }
     }

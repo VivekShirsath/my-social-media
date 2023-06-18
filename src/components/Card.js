@@ -42,8 +42,8 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
         followUser(token,user[0]._id,updateUsers)
     }
 
-    const notfollowedUsers  =users.filter(({username}) => loggedUser?.following?.every(user => user.username !== username)).filter((user => user.username !== loggedUser.username));
-    console.log(notfollowedUsers.some((user) => user.username === username))
+    const notfollowedUsers = users.filter(({username}) => loggedUser?.following?.every(user => user.username !== username)).filter((user => user.username !== loggedUser.username));
+    
     return(
         <div className="text-color flex  p-4 border-b-2 relative" >
             <div className="flex justify-around items-center">

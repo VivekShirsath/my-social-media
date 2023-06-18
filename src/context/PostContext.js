@@ -1,6 +1,6 @@
-import { createContext,useContext, useReducer } from "react";
+import { createContext,useContext, useReducer,useEffect } from "react";
 import { reducer } from "../components/reducer";
-import axios from "axios";
+import { getPosts } from "../services";
 
 export const PostContext = createContext(null);
 
@@ -10,6 +10,10 @@ export const PostProvider = ({children}) => {
         posts : [],
         filters : "",
     })
+
+    useEffect(() => {
+        getPosts(dispatch);
+    },[]);
     
     return(
         <PostContext.Provider value={{...state,dispatch}}>

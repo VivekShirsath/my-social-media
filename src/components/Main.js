@@ -9,7 +9,7 @@ export const Main = () => {
         <Input/>
         <Filter/>
         <hr className="text-primary_bg"></hr>
-        <Post/>
+        <Post type={"home"}/>
         </div>
     )
 }

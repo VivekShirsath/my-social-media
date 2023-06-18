@@ -2,14 +2,12 @@ import { useState,useEffect } from "react"
 import load from '../images/loader.svg'
 import { usePost } from "../context/PostContext";
 import {Card} from "./Card";
-import { getPosts } from "../services";
 
 export const ExploreFeed = () => {
-    const {posts,dispatch} = usePost();
+    const {posts} = usePost();
     const [loading,setisLoading] = useState(true);
 
     useEffect(() => {
-        getPosts(dispatch);
         setisLoading(false);
     },[]);
 
