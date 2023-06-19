@@ -14,6 +14,8 @@ export const users = [
     password: "vivek123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    bio : "Hello Everyone",
+    github : "https://github.com/VivekShirsath",
     imageId : "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
     bookmarks: [],
     followers: [{
@@ -27,7 +29,7 @@ export const users = [
     firstName: "Mahesh",
     lastName: "Jogdand",
     username: "mahesh10",
-    }]
+    }],
   },
   {
     _id: 2,

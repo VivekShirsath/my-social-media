@@ -3,6 +3,7 @@ import { Login } from './pages/login';
 import { Home } from './pages/Home';
 import { Explore } from './pages/Explore';
 import { BookMarks } from './pages/BookMarks';
+import { Profile } from './pages/Profile';
 import Mockman from "mockman-js";
 import { ProtectedRoute } from './components/ProtectedRoute';
 import './App.css';
@@ -25,6 +26,11 @@ function App() {
         <Route path = "/bookmarks" element={
           <ProtectedRoute>
         <BookMarks/>
+        </ProtectedRoute>
+        }/>
+        <Route path = "/profile" element={
+          <ProtectedRoute>
+        <Profile/>
         </ProtectedRoute>
         }/>
         <Route path = "/login" element={<Login/>}/>

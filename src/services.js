@@ -178,4 +178,30 @@ export const likePost = async(token,dispatch,_id) => {
     }
  }
 
+ export const getbookmarkPosts = async(setbookMarkId,token) => {
+    try{
+        const result = await fetch("/api/users/bookmark",
+        {
+             headers: { authorization: token } ,
+            }
+        )
+        const data = await result.json();
+        setbookMarkId(data);
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
+ export const getPostByUsername = async(setlogUserPosts,username) => {
+    try{
+        const result = await fetch(`/api/posts/user/${username}`)
+        const data = await result.json();
+        setlogUserPosts(data.posts);
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
 
