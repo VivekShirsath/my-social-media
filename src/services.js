@@ -154,7 +154,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
           );
         const data = await result.json();
-        updateUsers(data,"unfollow");
+        updateUsers(data,"follow");
     }
     catch(error){
         console.log(error);
@@ -198,10 +198,35 @@ export const likePost = async(token,dispatch,_id) => {
         const result = await fetch(`/api/posts/user/${username}`)
         const data = await result.json();
         setlogUserPosts(data.posts);
+        console.log(data.posts);
     }
     catch(error){
         console.log(error);
     }
  }
+
+
+ export const editUser = async(token,editdata,updateUsers) => {
+    try{
+       const result = await axios.post("/api/users/edit", 
+       {
+        userData: {
+            bio : editdata?.bio,
+            imageId : editdata?.imageId,
+            github : editdata?.github,
+        }
+    },
+    {
+        headers:{
+            authorization: token,
+        }
+    })
+    updateUsers(result.data.user,"edit");   
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
 
 

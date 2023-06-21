@@ -45,7 +45,7 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
     const notfollowedUsers = users.filter(({username}) => loggedUser?.following?.every(user => user.username !== username)).filter((user => user.username !== loggedUser.username));
     
     return(
-        <div className="text-color flex  p-4 border-b-2 relative" >
+        <div className="text-color flex  p-4 border-b-2 relative z-0" >
             <div className="flex justify-around items-center">
              <img src={imageId} alt="avatar"
              className="w-12 self-start"/>

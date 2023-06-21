@@ -1,10 +1,14 @@
 import { useState , useEffect } from "react"
-import load from '../images/loader.svg'
+import { Modal } from "./Modal";
 import { useAuth } from "../context/AuthContext"
 
 export const ProfileCard = () => {
     const {loggedUser} = useAuth();
+    const [modalOpen,setModalOpen] = useState(false);
 
+    const handleModal = () => {
+        setModalOpen(true);
+    }
     return(
         <div className="flex justify-between text-color p-3 items-center">
             <div className="flex gap-3">
@@ -20,8 +24,12 @@ export const ProfileCard = () => {
                     </div>
                 </div>
             </div>
-            <button className="bg-cta_color text-secondary_bg rounded-md p-1 w-fit self-start">
+            <button className="bg-cta_color text-secondary_bg rounded-md p-1 w-fit self-start"
+            onClick = {() => handleModal()}>
                 Edit Profile</button>
+            {
+                modalOpen && <Modal setModalOpen={setModalOpen} modalOpen={modalOpen}/>
+            }
         </div>
     )
 }

@@ -6,17 +6,20 @@ import { ProfileCard } from "../components/ProfileCard"
 import { getPostByUsername } from "../services"
 import { useAuth } from "../context/AuthContext"
 import { Card } from "../components/Card"
+import { usePost } from "../context/PostContext"
 
 export const Profile = () => {
     const [loading,setisLoading] = useState(true);
-    const [logUserPosts,setlogUserPosts] = useState([]);
+    const {posts} = usePost()
+    //const [logUserPosts,setlogUserPosts] = useState([]);
     const {loggedUser} = useAuth();
 
     useEffect(() => {
         setisLoading(false)
-        getPostByUsername(setlogUserPosts,loggedUser.username)
-    },[logUserPosts])
+        // getPostByUsername(setlogUserPosts,loggedUser.username)
+    },[posts])
 
+    const logUserPosts = posts.filter(({username}) => username === loggedUser.username)
     return(
         <>
         <Aside/>

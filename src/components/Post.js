@@ -8,16 +8,17 @@ import { filterLogic } from "../helpers";
 
 
 export const Post = ({type}) => {
-    const {posts,filters} = usePost();
+    const {filters,posts} = usePost();
     const [loading,setisLoading] = useState(true);
-    const {loggedUser,token} = useAuth();
+    const {loggedUser} = useAuth();
 
     useEffect(() => {
         setisLoading(false);
-    },[]);
+    },[posts]);
 
         const filterPosts = filterLogic(loggedUser,posts,filters)
-        
+       
+       
     return(
         <>
         {

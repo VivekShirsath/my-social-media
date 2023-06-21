@@ -26,26 +26,27 @@ export const UserProvider = ({children}) => {
     },[])
 
     const updateUsers = (data,type) => {
-        if(type !== "bookmark"){
+        console.log(data);
+        if(type === "follow"){
             const {user,followUser} = data;
-        //   const nonloggeduser = users.filter((val) => val.username !== user.username && val.username !== followUser.username);
-        //   setUsers([...nonloggeduser,user,followUser])    
-        //  setLoggedUser(user);
           const update = users.map((val) => val.username === user.username ?
           {...val,following : user.following} : val).map((val) => val.username === followUser.username ?
           {...val,followers : followUser.followers} : val);
           setUsers(update);
           setLoggedUser(user);
         }
-        else{
-            // const nonloggeduser = users.filter((val) => val.username !== loggedUser.username);  
-            // const user = {...loggedUser,bookmarks : data.bookmarks};
+        else if(type === "bookmark"){
             setUsers(users.map((user) => user.username === loggedUser.username ? 
             {...user,bookmarks: data.bookmarks} : user));
             setLoggedUser({...loggedUser,bookmarks:data.bookmarks})
         }
+        else if(type === "edit"){
+            setUsers(users.map((user) => user.username === loggedUser.username ? 
+            {...data} : user));
+            setLoggedUser({...data})
+        }
     }
-    console.log(users);
+     
     return(
         <UserContext.Provider value = {{getUsers,users,setUsers,updateUsers}}>
             {children}
