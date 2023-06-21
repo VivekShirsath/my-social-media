@@ -3,13 +3,13 @@ import { useState} from "react";
 import { useUser } from "../context/UserContext";
 import { usePost } from "../context/PostContext";
 import {NavLink} from "react-router-dom"
-import { editUser } from "../services";
+import { editUser ,getPosts } from "../services";
 
 
 export const Modal = ({modalOpen,setModalOpen}) => {
     const {loggedUser,token} = useAuth();
-    const {updateUsers} = useUser();
-    const {dispatch,posts} = usePost();
+    const {updateUsers,getUsers} = useUser();
+    const {dispatch,posts,getPosts} = usePost();
     const [editData,setEditData] = useState(
         {
         imageId : loggedUser.imageId,
@@ -18,11 +18,14 @@ export const Modal = ({modalOpen,setModalOpen}) => {
         }
     )
 
-    const handleSave = (e) => {
+   
+
+    const handleSave = async(e) => {
        e.preventDefault();
-       editUser(token,editData,updateUsers)
-      const updatedPost = posts?.map((post) => post.username === loggedUser.username ? {...post,imageId:editData.imageId} : post)
+       await editUser(token,editData,updateUsers,getUsers)
+       const updatedPost = posts?.map((post) => post.username === loggedUser.username ? {...post,imageId:editData.imageId} : post)
        dispatch({type:"Edit_Post",payload : updatedPost})
+       getPosts(dispatch);
        setModalOpen(false);
     }
     

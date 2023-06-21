@@ -17,16 +17,19 @@ export const Input = () => {
     return(
         <>
         <h4 className="text-2xl text-color p-4 text-center sticky top-0 backdrop-blur-sm z-50">Home</h4>
-        <div className="flex relative p-2 items-center">
-        <input type="text" className = "p-4 rounded-md text-secondary_bg w-full"
+        <div className="flex relative p-2 items-center flex-col">
+        <div role="textbox" contentEditable="true" className = "p-4 border-0 text-color"
         placeholder="What's happening?" 
         onInput={(e) => setNewPost(e.target.value)}
         value={newPost}
-        />
-        <button className= "bg-cta_color text-secondary_bg rounded-md p-1 absolute right-3"
-        disabled= {newPost.length === 0}
+        ></div>
+        <div>
+        <input type="file"/>
+        <button className= "bg-cta_color text-secondary_bg rounded-md p-1"
+        disabled= {newPost?.length === 0}
         onClick = {() => handleAdd()}>
             Post</button>
+            </div>
          </div>
         </>
     )

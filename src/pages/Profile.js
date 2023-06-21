@@ -11,15 +11,16 @@ import { usePost } from "../context/PostContext"
 export const Profile = () => {
     const [loading,setisLoading] = useState(true);
     const {posts} = usePost()
-    //const [logUserPosts,setlogUserPosts] = useState([]);
+    const [logUserPosts,setlogUserPosts] = useState([]);
     const {loggedUser} = useAuth();
 
     useEffect(() => {
         setisLoading(false)
-        // getPostByUsername(setlogUserPosts,loggedUser.username)
-    },[posts])
+        getPostByUsername(setlogUserPosts,loggedUser.username)
+    },[posts,loggedUser])
 
-    const logUserPosts = posts.filter(({username}) => username === loggedUser.username)
+    console.log(logUserPosts);
+    // const logUserPosts = posts.filter(({username}) => username === loggedUser.username)
     return(
         <>
         <Aside/>

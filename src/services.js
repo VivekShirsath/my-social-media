@@ -206,7 +206,7 @@ export const likePost = async(token,dispatch,_id) => {
  }
 
 
- export const editUser = async(token,editdata,updateUsers) => {
+ export const editUser = async(token,editdata,updateUsers,getUsers) => {
     try{
        const result = await axios.post("/api/users/edit", 
        {
@@ -221,7 +221,8 @@ export const likePost = async(token,dispatch,_id) => {
             authorization: token,
         }
     })
-    updateUsers(result.data.user,"edit");   
+    updateUsers(result.data.user,"edit");  
+    getUsers(); 
     }
     catch(error){
         console.log(error);

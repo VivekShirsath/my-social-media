@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 import { Explore } from './pages/Explore';
 import { BookMarks } from './pages/BookMarks';
 import { Profile } from './pages/Profile';
+import { SignUp } from './pages/SignUp';
 import Mockman from "mockman-js";
 import { ProtectedRoute } from './components/ProtectedRoute';
 import './App.css';
@@ -34,6 +35,7 @@ function App() {
         </ProtectedRoute>
         }/>
         <Route path = "/login" element={<Login/>}/>
+        <Route path ="/signup" element = {<SignUp/>}/>
         <Route path="/mockman" element={<Mockman/>}/>
       </Route>
      </Routes>

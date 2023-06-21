@@ -23,7 +23,7 @@ export const Aside = () => {
                 <h4 className="hover:bg-secondary_bg hover:text-primary_bg rounded-full p-1">
                     Bookmarks
                     </h4></NavLink>
-            <NavLink  style={getActiveStyle}  to ="/profile">
+            <NavLink  style={getActiveStyle}  to = "/profile">
                 <h4 className="hover:bg-secondary_bg hover:text-primary_bg rounded-full p-1">
                     Profile
                     </h4></NavLink>

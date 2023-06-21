@@ -9,17 +9,19 @@ export const AuthProvider = ({children}) => {
     const [token,setToken] = useState(storage?.token);
     const [loggedUser,setLoggedUser] = useState(storage?.user);
 
-    const signUpHandler = async({ firstname,lastname,
-    email,
+    const signUpHandler = async({ firstName,lastName,
+    username,
     password,
     }) => 
     {
+        console.log(firstName)
     try{
         const {status,data} = await axios.post("/api/auth/signup",{
-            email,
+            username,
             password,
-            firstName : firstname,
-            lastName : lastname,
+            firstName,
+            lastName,
+            imageId:"https://cdn-icons-png.flaticon.com/128/2202/2202112.png",
     })
         if(status === 201){
             localStorage.setItem('loginDetails',JSON.stringify({
@@ -29,7 +31,7 @@ export const AuthProvider = ({children}) => {
             setToken(data.encodedToken);
             setLoggedUser(data.createdUser);
         }
-      
+       console.log(data)
     }
     catch(error){
         console.log(error);
@@ -42,7 +44,6 @@ export const AuthProvider = ({children}) => {
                 username,
                 password,
             });
-            console.log(status,data);
             if(status === 201 || status === 200){
                 localStorage.setItem('loginDetails',JSON.stringify({
                     token : data.encodedToken,
@@ -51,6 +52,7 @@ export const AuthProvider = ({children}) => {
                 setToken(data.encodedToken);
                 setLoggedUser(data.foundUser);
             }
+            console.log(data)
         }
         catch(error){
             console.log(error);

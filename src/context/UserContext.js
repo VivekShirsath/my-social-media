@@ -26,7 +26,6 @@ export const UserProvider = ({children}) => {
     },[])
 
     const updateUsers = (data,type) => {
-        console.log(data);
         if(type === "follow"){
             const {user,followUser} = data;
           const update = users.map((val) => val.username === user.username ?
@@ -46,7 +45,7 @@ export const UserProvider = ({children}) => {
             setLoggedUser({...data})
         }
     }
-     
+     console.log(users);
     return(
         <UserContext.Provider value = {{getUsers,users,setUsers,updateUsers}}>
             {children}
