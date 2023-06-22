@@ -3,12 +3,13 @@ import {useAuth} from '../context/AuthContext';
 import { usePost } from '../context/PostContext';
 import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost,unfollowUser,followUser} from '../services';
 import { useUser } from '../context/UserContext';
+import { NavLink } from 'react-router-dom';
 
 export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,imageId}) => {
     const [clicked,setClicked] = useState(false);
     const name = firstName.concat(" ")
     const fullName = name.concat(lastName)
-    const {loggedUser,token,setLoggedUser} = useAuth();
+    const {loggedUser,token} = useAuth();
     const {dispatch} = usePost();
     const [isModalOpen,setModalOpen] = useState(false);
     const [editedPost,setEditedPost] = useState(content);
@@ -46,10 +47,12 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
     
     return(
         <div className="text-color flex  p-4 border-b-2 relative z-0" >
+            <NavLink to = {"/profile/"+ username}>
             <div className="flex justify-around items-center">
              <img src={imageId} alt="avatar"
              className="w-12 self-start"/>
              </div>
+             </NavLink>
              <div className="flex-col ml-1 p-1 w-full">
                 <div className='flex justify-between w-full '>
                 <h3 className="inline-block">{fullName}</h3>

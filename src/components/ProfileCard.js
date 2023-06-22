@@ -1,21 +1,24 @@
 import { useState , useEffect } from "react"
 import { Modal } from "./Modal";
 import { useAuth } from "../context/AuthContext"
+import { getUserById } from "../services";
 
-export const ProfileCard = () => {
+export const ProfileCard = ({currUser,loading}) => {
     const {loggedUser} = useAuth();
     const [modalOpen,setModalOpen] = useState(false);
 
     const handleModal = () => {
         setModalOpen(true);
     }
+    console.log(loading,currUser)
     return(
+        <>
         <div className="flex justify-between text-color p-3 items-center">
             <div className="flex gap-3">
-                <img src={loggedUser?.imageId} alt="avatar"/>
+                <img src={currUser?.imageId} alt="avatar"/>
                 <div className="flex flex-col gap-2">
                     <div>
-                        <h2 className="text-xl">{loggedUser?.firstName} {loggedUser?.lastName}</h2>
+                        <h2 className="text-xl">{currUser?.firstName} {currUser?.lastName}</h2>
                         <p>{loggedUser?.username}</p>
                     </div>
                     <div>
@@ -31,5 +34,6 @@ export const ProfileCard = () => {
                 modalOpen && <Modal setModalOpen={setModalOpen} modalOpen={modalOpen}/>
             }
         </div>
+        </>
     )
 }

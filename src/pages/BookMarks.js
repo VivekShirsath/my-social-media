@@ -15,8 +15,7 @@ export const BookMarks = () => {
     const {posts} = usePost();
 
     useEffect(() => {
-        setLoading(false);
-        getbookmarkPosts(setbookMarkId,token)
+        getbookmarkPosts(setbookMarkId,token,setLoading)
     },[bookMarkId])
     
    const bookMarkPosts = posts.filter((post) => bookMarkId?.bookmarks?.some(user => user === post._id))

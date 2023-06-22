@@ -3,13 +3,13 @@ import { useState} from "react";
 import { useUser } from "../context/UserContext";
 import { usePost } from "../context/PostContext";
 import {NavLink} from "react-router-dom"
-import { editUser ,getPosts } from "../services";
+import { editUser,editImagePost } from "../services";
 
 
 export const Modal = ({modalOpen,setModalOpen}) => {
     const {loggedUser,token} = useAuth();
-    const {updateUsers,getUsers} = useUser();
-    const {dispatch,posts,getPosts} = usePost();
+    const {updateUsers} = useUser();
+    const {dispatch,posts} = usePost();
     const [editData,setEditData] = useState(
         {
         imageId : loggedUser.imageId,
@@ -18,22 +18,22 @@ export const Modal = ({modalOpen,setModalOpen}) => {
         }
     )
 
-   
-
     const handleSave = async(e) => {
        e.preventDefault();
-       await editUser(token,editData,updateUsers,getUsers)
-       const updatedPost = posts?.map((post) => post.username === loggedUser.username ? {...post,imageId:editData.imageId} : post)
-       dispatch({type:"Edit_Post",payload : updatedPost})
-       getPosts(dispatch);
+       editUser(token,editData,updateUsers)
+       const loggedUserPost = posts?.filter((post) => post.username === loggedUser.username)
+       for(let i = 0;i<loggedUserPost.length;i++){
+        editImagePost(token,dispatch,loggedUserPost[i]._id,editData.imageId)
+       }
        setModalOpen(false);
     }
     
     const handleImage = (e) => {
-        setEditData({...editData,imageId : e.target.src})
+        setEditData({...editData,imageId : e.target.src})    
     }
     
     const handleCancel = (e) => {
+     
       e.preventDefault();
       setModalOpen(false);
     }
@@ -53,11 +53,11 @@ export const Modal = ({modalOpen,setModalOpen}) => {
                 <div className="flex gap-5 w-2/4 flex-wrap">
                  <img src="https://cdn-icons-png.flaticon.com/128/4140/4140057.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm" onClick = {(e) => handleImage(e)}/>
                  
-                 <img src="https://cdn-icons-png.flaticon.com/128/4140/4140061.png" alt="avatar" className="w-12"  onClick = {(e) => handleImage(e)}/>
-                 <img src="https://cdn-icons-png.flaticon.com/128/4140/4140051.png" alt="avatar" className="w-12"  onClick = {(e) => handleImage(e)}/> 
-                 <img src="https://cdn-icons-png.flaticon.com/128/6997/6997662.png" alt="avatar" className="w-12"  onClick = {(e) => handleImage(e)}/>  
-                 <img src="https://cdn-icons-png.flaticon.com/128/4139/4139981.png" alt="avatar" className="w-12"  onClick = {(e) => handleImage(e)}/>  
-                 <img src="https://cdn-icons-png.flaticon.com/128/4140/4140060.png" alt="avatar" className="w-12"  onClick = {(e) => handleImage(e)}/>    
+                 <img src="https://cdn-icons-png.flaticon.com/128/4140/4140061.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm"  onClick = {(e) => handleImage(e)}/>
+                 <img src="https://cdn-icons-png.flaticon.com/128/4140/4140051.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm"  onClick = {(e) => handleImage(e)}/> 
+                 <img src="https://cdn-icons-png.flaticon.com/128/6997/6997662.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm"  onClick = {(e) => handleImage(e)}/>  
+                 <img src="https://cdn-icons-png.flaticon.com/128/4139/4139981.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm"  onClick = {(e) => handleImage(e)}/>  
+                 <img src="https://cdn-icons-png.flaticon.com/128/4140/4140060.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm"  onClick = {(e) => handleImage(e)}/>    
                 </div>
              </div> 
              </div> 
@@ -72,9 +72,9 @@ export const Modal = ({modalOpen,setModalOpen}) => {
                 onChange={(e) => setEditData({...editData,github:e.target.value})}
                 required pattern="https://.*"/>
              </div> 
-          <div>
-            <button onClick = {(e) => handleSave(e)}>Save</button>
-            <button onClick = {(e) => handleCancel(e)}>Cancel</button>
+          <div className="flex gap-3">
+            <button onClick = {(e) => handleSave(e)} className= "bg-cta_color text-secondary_bg rounded-md p-2">Save</button>
+            <button onClick = {(e) => handleCancel(e)} className= "bg-cta_color text-secondary_bg rounded-md p-2">Cancel</button>
           </div>
         </form>
         </div>

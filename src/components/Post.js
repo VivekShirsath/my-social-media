@@ -14,10 +14,10 @@ export const Post = ({type}) => {
 
     useEffect(() => {
         setisLoading(false);
-    },[posts]);
+    },[]);
 
         const filterPosts = filterLogic(loggedUser,posts,filters)
-       
+        console.log(posts);
        
     return(
         <>

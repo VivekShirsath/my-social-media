@@ -106,7 +106,30 @@ export const likePost = async(token,dispatch,_id) => {
     }
  }
 
+ export const editImagePost = async(token,dispatch,id,data) => {
+    console.log(id,data);
+    try{
+        const result = await axios.post(`/api/posts/edit/${id}`,
+
+        {
+            postData: {
+                imageId : data,
+            }
+        },
+        {
+            headers:{
+                authorization: token,
+            }
+        },)
+        dispatch({type:"Edit_Post",payload:result.data.posts})
+    }
+    catch(error){
+        console.log(error);
+    }
+ }
+
  export const editPost = async(token,dispatch,id,data) => {
+    console.log(id,data);
     try{
         const result = await axios.post(`/api/posts/edit/${id}`,
 
@@ -178,7 +201,7 @@ export const likePost = async(token,dispatch,_id) => {
     }
  }
 
- export const getbookmarkPosts = async(setbookMarkId,token) => {
+ export const getbookmarkPosts = async(setbookMarkId,token,setLoading) => {
     try{
         const result = await fetch("/api/users/bookmark",
         {
@@ -187,6 +210,7 @@ export const likePost = async(token,dispatch,_id) => {
         )
         const data = await result.json();
         setbookMarkId(data);
+        setLoading(false);
     }
     catch(error){
         console.log(error);
@@ -205,8 +229,21 @@ export const likePost = async(token,dispatch,_id) => {
     }
  }
 
+ export const getUserById = async(id,setcurrUser,setisLoading) => {
+    console.log(id)
+    try{
+      const result = await fetch(`/api/users/${id}`)
+      const data = await result.json();
+      setcurrUser(data);
+      setisLoading(false);
+      console.log(data);
+    }
+    catch(error){
+       console.log(error);
+    }
+ }
 
- export const editUser = async(token,editdata,updateUsers,getUsers) => {
+ export const editUser = async(token,editdata,updateUsers) => {
     try{
        const result = await axios.post("/api/users/edit", 
        {
@@ -221,8 +258,7 @@ export const likePost = async(token,dispatch,_id) => {
             authorization: token,
         }
     })
-    updateUsers(result.data.user,"edit");  
-    getUsers(); 
+    updateUsers(result.data.user,"edit");   
     }
     catch(error){
         console.log(error);

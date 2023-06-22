@@ -29,7 +29,7 @@ function App() {
         <BookMarks/>
         </ProtectedRoute>
         }/>
-        <Route path = "/profile" element={
+        <Route path = "/profile/:username" element={
           <ProtectedRoute>
         <Profile/>
         </ProtectedRoute>
