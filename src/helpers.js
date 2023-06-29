@@ -1,8 +1,8 @@
 
 
 function dateComparison(a, b) {
-    const date1 = new Date(a.createdAt)
-    const date2 = new Date(b.createdAt)
+    const date1 = Date.parse(a.createdAt)
+    const date2 = Date.parse(b.createdAt)
     return date2 - date1;
 }
 

@@ -33,7 +33,6 @@ export const Modal = ({modalOpen,setModalOpen}) => {
     }
     
     const handleCancel = (e) => {
-     
       e.preventDefault();
       setModalOpen(false);
     }
@@ -44,7 +43,7 @@ export const Modal = ({modalOpen,setModalOpen}) => {
         <form className="bg-black z-auto text-color bg-secondary_bg p-3
         flex flex-col gap-3 justify-center items-center rounded-md shadow-md shadow-primary_bg ">
           <div className="flex gap-3 items-center">
-          <img src={loggedUser?.imageId} alt="avatar"  className="w-12 self-start"/>
+          <img src={editData?.imageId} alt="avatar"  className="w-12 self-start"/>
           <h3>Edit Profile</h3>
           </div>
           <div>

@@ -8,8 +8,15 @@ const getActiveStyle = ({ isActive }) => ({
     padding : isActive ? "3px" : "",
   });
 
+  
+
 export const Aside = () => {
-    const {loggedUser} = useAuth();
+    const {loggedUser,setToken} = useAuth();
+
+    const handlelogOut = () => {
+        localStorage.removeItem('loginDetails');
+        setToken("")
+      }
     return(
         <div className="flex flex-col bg-primary_bg text-lg  gap-7
         w-1/4 text-secondary_bg font-semibold items-center p-3 sticky top-0 min-h-screen self-start">
@@ -29,7 +36,8 @@ export const Aside = () => {
                 <h4 className="hover:bg-secondary_bg hover:text-primary_bg rounded-full p-1">
                     Profile
                     </h4></NavLink>
-            <h4>Log Out</h4>
+            <h4 className="hover:bg-secondary_bg hover:text-primary_bg rounded-full p-1 hover:cursor-pointer" 
+            onClick = {() => handlelogOut()}>Log Out</h4>
         </div>
     )
 }

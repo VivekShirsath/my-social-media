@@ -1,25 +1,28 @@
 import axios from "axios";
 
-export const getPosts = async(dispatch) => {
+export const getPosts = async(dispatch,setisLoading,loading) => {
     try{
         const {data} = await axios.get("/api/posts");
         dispatch({type : "Post_Feed",payload:data.posts})
+        setisLoading(!loading);
     }
     catch(error){
         console.log(error);
     }
 }
 
- export const addPosts = async(post,token,dispatch,firstName,lastName,imageId) => {
-  
+ export const addPosts = async(text,image,video,token,dispatch,firstName,lastName,imageId) => {
+  console.log("inside")
     try{
         const {data} = await axios.post("/api/posts",
         {
             postData: {
-                content : post,
+                content : text,
                 firstName,
                 lastName,
                 imageId,
+                imageContent : image,
+                videoContent : video,
             }
         },
         {
@@ -28,6 +31,7 @@ export const getPosts = async(dispatch) => {
             }
         },
         )
+        console.log(data.posts);
         dispatch({type:"Add_Post",payload:data.posts});
     }
     catch(error){
@@ -128,7 +132,7 @@ export const likePost = async(token,dispatch,_id) => {
     }
  }
 
- export const editPost = async(token,dispatch,id,data) => {
+ export const editPost = async(token,dispatch,id,data,image,video) => {
     console.log(id,data);
     try{
         const result = await axios.post(`/api/posts/edit/${id}`,
@@ -136,6 +140,8 @@ export const likePost = async(token,dispatch,_id) => {
         {
             postData: {
                 content : data,
+                imageContent : image,
+                videoContent : video,
             }
         },
         {

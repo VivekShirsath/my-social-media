@@ -24,7 +24,7 @@ export const Profile = () => {
     useEffect(() => {
         getPostByUsername(setlogUserPosts,username)
         getUserById(username,setcurrUser,setisLoading) 
-    },[posts,username])
+    },[posts,username,currUser])
 
     const handleModal = () => {
         setModalOpen(true);

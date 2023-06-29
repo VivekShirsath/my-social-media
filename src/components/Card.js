@@ -4,8 +4,9 @@ import { usePost } from '../context/PostContext';
 import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost,unfollowUser,followUser} from '../services';
 import { useUser } from '../context/UserContext';
 import { NavLink } from 'react-router-dom';
+import { EditModal } from './EditModal';
 
-export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,imageId}) => {
+export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,imageId,imageContent,videoContent}) => {
     const [clicked,setClicked] = useState(false);
     const name = firstName.concat(" ")
     const fullName = name.concat(lastName)
@@ -46,7 +47,8 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
     const notfollowedUsers = users.filter(({username}) => loggedUser?.following?.every(user => user.username !== username)).filter((user => user.username !== loggedUser.username));
     
     return(
-        <div className="text-color flex  p-4 border-b-2 relative z-0" >
+        <div className="text-color flex  p-4 border-b-2 relative" >
+            <>
             <NavLink to = {"/profile/"+ username}>
             <div className="flex justify-around items-center">
              <img src={imageId} alt="avatar"
@@ -80,6 +82,12 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                 <p className="inline-block">@{username}</p>
                 <h3 className="p-1 w-fit">{createdAt}</h3>
             <p className="p-1">{content}</p>
+            {
+                imageContent && <img src={imageContent} alt="post" className='flex justify-center'/>
+            }
+            {
+                videoContent && <video className='w-full' autoPlay><source src={videoContent}></source></video>
+            }
             <div className="flex p-1 cursor-pointer">
             <div className='flex w-11'>
             {
@@ -110,17 +118,17 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
            }
             </div>
             </div>
-            {isModalOpen && 
-             <div className='absolute bg-primary_bg text-secondary_bg w-full h-full inset-0 shadow-md flex flex-col shadow-secondary_bg p-4'>
+            {isModalOpen && <EditModal content={content} imageId={imageId} imageContent={imageContent} videoContent={videoContent} id={_id} setModalOpen = {setModalOpen}/>}
+              {/* <div className='absolute bg-primary_bg text-secondary_bg w-full h-full inset-0 shadow-md flex flex-col shadow-secondary_bg p-4'>
                 <div role='textbox' contentEditable="true" className='p-2 outline-none' onInput={(e) => setEditedPost(e.target.innerText)}>
                 {content}
-                </div>
+                 </div>
                 <div className='flex align-baseline justify-center'>
                 <button className="bg-cta_color text-secondary_bg rounded-md p-1 mt-1 text-lg mr-4" onClick={() => handleSave()}>Save</button>
                 <button className="bg-cta_color text-secondary_bg rounded-md p-1 mt-1 text-lg" onClick={() => setModalOpen(false)}>Cancel</button>
-                </div>
-            </div>
-            }
+                 </div>
+             </div> */}
+          </>  
         </div>
     )
 }
