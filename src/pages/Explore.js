@@ -6,7 +6,7 @@ export const Explore = () => {
     return(
         <>
         <Aside/>
-        <div className="flex flex-col w-2/4 bg-secondary_bg">
+        <div className="flex flex-col md:w-2/4 bg-secondary_bg w-full">
         <Post type={"explore"}/>
         </div>
         <Section/>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState ,useRef,useEffect} from 'react';
 import {useAuth} from '../context/AuthContext';
 import { usePost } from '../context/PostContext';
 import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost,unfollowUser,followUser} from '../services';
@@ -7,14 +7,14 @@ import { NavLink } from 'react-router-dom';
 import { EditModal } from './EditModal';
 
 export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,imageId,imageContent,videoContent}) => {
-    const [clicked,setClicked] = useState(false);
     const name = firstName.concat(" ")
     const fullName = name.concat(lastName)
     const {loggedUser,token} = useAuth();
     const {dispatch} = usePost();
     const [isModalOpen,setModalOpen] = useState(false);
-    const [editedPost,setEditedPost] = useState(content);
+   const [activeId,setActiveId] = useState(null);
     const {users,updateUsers} = useUser();
+    const modalRef = useRef(null);
 
     const isPostLiked = (likes) => likes?.likedBy?.find(({username}) => username===loggedUser.username)
     const isBookmarked = (id) => loggedUser?.bookmarks?.find((unique) => unique === id);
@@ -22,16 +22,30 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
 
     const toggleModal = () => {
         setModalOpen(!isModalOpen);
-        setClicked(false);
+       
     }
 
-    const handleSave = () => {
-        setModalOpen(false);
-        editPost(token,dispatch,_id,editedPost)
+    const handleClick = (e,id) => {
+       e.stopPropagation();
+      
+        if(id === activeId){
+            setActiveId(null);
+        }
+        else{
+            console.log("K")
+            setActiveId(id);
+        }
     }
+    console.log(activeId);
+
+    const handleOutsideClick = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+          setActiveId(null)
+        }
+      };
 
     const handleDelete = () => {
-        setClicked(false);
+        setActiveId(null);
         deletePost(token,dispatch,_id)
     }
     const handleUnFollow = () => {
@@ -45,6 +59,17 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
     }
 
     const notfollowedUsers = users.filter(({username}) => loggedUser?.following?.every(user => user.username !== username)).filter((user => user.username !== loggedUser.username));
+
+    useEffect(() => {
+        if (activeId) {
+          document.addEventListener('click', handleOutsideClick);
+        }
+    
+        return () => {
+          document.removeEventListener('click', handleOutsideClick);
+        };
+      }, [activeId]);
+    
     
     return(
         <div className="text-color flex  p-4 border-b-2 relative" >
@@ -60,10 +85,10 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                 <h3 className="inline-block">{fullName}</h3>
                 <div className='relative'>
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 text-color fill-color self-end cursor-pointer"
-                onClick={() => setClicked(!clicked)}>
+                onClick={(e) => handleClick(e,_id)}>
                     <g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
                 {
-                    clicked && <div className="absolute top-4 right-4 flex flex-col bg-primary_bg border-color rounded-sm p-2 text-secondary_bg shadow-primary_bg shadow-sm font-semibold">
+                     activeId === _id && <div className="absolute top-4 right-4 flex flex-col bg-primary_bg border-color rounded-sm p-2 text-secondary_bg shadow-primary_bg shadow-sm font-semibold" ref={modalRef}>
                        { 
                         isPostByLoggedUser(username) ?
                         <>
@@ -83,10 +108,10 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                 <h3 className="p-1 w-fit">{createdAt}</h3>
             <p className="p-1">{content}</p>
             {
-                imageContent && <img src={imageContent} alt="post" className='flex justify-center'/>
+                imageContent && <img src={imageContent} alt="post" className='flex justify-center rounded-md'/>
             }
             {
-                videoContent && <video className='w-full' autoPlay><source src={videoContent}></source></video>
+                videoContent && <video className='w-full rounded-md' autoPlay><source src={videoContent}></source></video>
             }
             <div className="flex p-1 cursor-pointer">
             <div className='flex w-11'>
@@ -119,15 +144,6 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
             </div>
             </div>
             {isModalOpen && <EditModal content={content} imageId={imageId} imageContent={imageContent} videoContent={videoContent} id={_id} setModalOpen = {setModalOpen}/>}
-              {/* <div className='absolute bg-primary_bg text-secondary_bg w-full h-full inset-0 shadow-md flex flex-col shadow-secondary_bg p-4'>
-                <div role='textbox' contentEditable="true" className='p-2 outline-none' onInput={(e) => setEditedPost(e.target.innerText)}>
-                {content}
-                 </div>
-                <div className='flex align-baseline justify-center'>
-                <button className="bg-cta_color text-secondary_bg rounded-md p-1 mt-1 text-lg mr-4" onClick={() => handleSave()}>Save</button>
-                <button className="bg-cta_color text-secondary_bg rounded-md p-1 mt-1 text-lg" onClick={() => setModalOpen(false)}>Cancel</button>
-                 </div>
-             </div> */}
           </>  
         </div>
     )

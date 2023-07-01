@@ -19,7 +19,7 @@ export const Profile = () => {
     const [currUser,setcurrUser] = useState({});
     const [modalOpen,setModalOpen] = useState(false);
     const {username} = useParams();
-    console.log(username)
+  
 
     useEffect(() => {
         getPostByUsername(setlogUserPosts,username)
@@ -45,7 +45,7 @@ export const Profile = () => {
     return(
         <>
         <Aside/>
-        <div className="flex flex-col w-2/4 bg-secondary_bg">       
+        <div className="flex flex-col md:w-2/4 bg-secondary_bg w-full">       
                 {loading ? <img src={load} className="w-20 bg-secondary_bg text-center mx-auto" alt="loader"/> :
                 <>
                 <h4 className="text-2xl text-color p-4 text-center sticky top-0 backdrop-blur-sm z-50 border-b-2">Profile</h4>

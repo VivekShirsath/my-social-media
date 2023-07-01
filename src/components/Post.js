@@ -17,7 +17,7 @@ export const Post = ({type}) => {
       },[]);
 
         const filterPosts = filterLogic(loggedUser,posts,filters)
-        console.log("render");
+        
        
     return(
         <>

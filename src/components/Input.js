@@ -17,7 +17,7 @@ export const Input = () => {
    const {token,loggedUser} = useAuth();
 
    const handleAdd = (e) => {
-    e.preventDefault();
+        e.preventDefault();
         addPosts(newPost.textContent,newPost.imageContent,newPost.videoContent,token,dispatch,loggedUser.firstName,
         loggedUser.lastName,loggedUser.imageId);
         setNewPost(initialPost)

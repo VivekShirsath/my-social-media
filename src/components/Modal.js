@@ -40,7 +40,7 @@ export const Modal = ({modalOpen,setModalOpen}) => {
     return(
         <div className="flex justify-center items-center min-h-screen
          bg-primary_bg/[.30] fixed top-0 left-0 right-0 z-20">
-        <form className="bg-black z-auto text-color bg-secondary_bg p-3
+        <form className="bg-black z-auto text-color bg-secondary_bg p-3 w-3/4 md:w-fit
         flex flex-col gap-3 justify-center items-center rounded-md shadow-md shadow-primary_bg ">
           <div className="flex gap-3 items-center">
           <img src={editData?.imageId} alt="avatar"  className="w-12 self-start"/>
@@ -49,7 +49,7 @@ export const Modal = ({modalOpen,setModalOpen}) => {
           <div>
             <div className="flex flex-col gap-3 items-center flex-wrap">
                 <p>Choose Avatar for your profile:</p>
-                <div className="flex gap-5 w-2/4 flex-wrap">
+                <div className="flex gap-5 w-3/4 flex-wrap md:w-2/4">
                  <img src="https://cdn-icons-png.flaticon.com/128/4140/4140057.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm" onClick = {(e) => handleImage(e)}/>
                  
                  <img src="https://cdn-icons-png.flaticon.com/128/4140/4140061.png" alt="avatar" className="w-12 cursor-pointer hover:bg-primary_bg hover:rounded-sm"  onClick = {(e) => handleImage(e)}/>

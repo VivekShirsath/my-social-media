@@ -11,7 +11,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="flex">
+    <div className="flex text-md relative">
      <Routes>
       <Route>
         <Route path = "/" element={

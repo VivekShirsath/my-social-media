@@ -13,8 +13,8 @@ export const ProfileCard = ({currUser,loading}) => {
     console.log(loading,currUser)
     return(
         <>
-        <div className="flex justify-between text-color p-3 items-center">
-            <div className="flex gap-3">
+        <div className="flex justify-between text-color p-3 items-center w-full">
+            <div className="flex gap-3 ">
                 <img src={currUser?.imageId} alt="avatar"/>
                 <div className="flex flex-col gap-2">
                     <div>
