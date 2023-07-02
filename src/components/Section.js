@@ -1,6 +1,6 @@
 
 import { useUser } from "../context/UserContext";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import { FollowCard } from "./FollowCard";
 import { SearchUsers } from "./SearchUsers";
 

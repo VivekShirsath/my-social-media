@@ -5,7 +5,7 @@ import { Card } from "../components/Card"
 import { getbookmarkPosts } from "../services"
 import { useEffect } from "react"
 import load from '../images/loader.svg'
-import { useAuth } from "../context/AuthContext"
+import { useAuth } from "../context/authContext"
 import { usePost } from "../context/PostContext"
 
 export const BookMarks = () => {

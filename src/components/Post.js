@@ -2,7 +2,7 @@ import { useState,useEffect,useRef,useCallback} from "react"
 import load from '../images/loader.svg'
 import { usePost } from "../context/PostContext";
 import { useUser } from "../context/UserContext";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/authContext";
 import {Card} from "./Card";
 import { filterLogic } from "../helpers";
 

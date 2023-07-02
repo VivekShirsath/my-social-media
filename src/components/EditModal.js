@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { editPost } from "../services"
-import { useAuth } from "../context/AuthContext"
+import { useAuth } from "../context/authContext"
 import { usePost } from "../context/PostContext"
 import { getPosts } from "../services"
 

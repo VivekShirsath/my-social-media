@@ -1,7 +1,7 @@
 import { createContext,useContext, useReducer,useEffect } from "react";
 import { reducer } from "../components/reducer";
 import { getPosts } from "../services";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./authContext";
 
 export const PostContext = createContext(null);
 
