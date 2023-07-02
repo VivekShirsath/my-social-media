@@ -40,6 +40,7 @@ export const reducer = (state,action) => {
                 ...state,
                 posts:action.payload,
             }
+           
         }
         case "Edit_Post":{
             return{

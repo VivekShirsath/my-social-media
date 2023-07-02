@@ -10,7 +10,7 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "India will win the Finals of WTC Test Championship, and be the first team to have all trophies.",
+      "Australia won the Finals of WTC Test Championship, and the first team to have all trophies.",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -22,11 +22,12 @@ export const posts = [
     createdAt: "5 January,2023",
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+    
   },
   {
     _id: uuid(),
     content:
-      "Big UCL Coming up on Sunday,will Pep get the treble?",
+      "2011 team was an emotion,still can't forget that night.",
     likes: {
       likeCount: 2,
       likedBy: [{
@@ -45,6 +46,7 @@ export const posts = [
     createdAt: "1 June,2023",
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+    imageContent : "https://wallpapers.com/images/high/indian-cricket-world-cup-finals-trophy-tqu37tasiq9mda8j.webp",
   },
   {
     _id: uuid(),
@@ -96,6 +98,7 @@ export const posts = [
     createdAt: "11 January,2023",
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/4140/4140051.png",
+    imageContent: "https://wallpapers.com/images/high/bgmi-1429-x-804-background-nnkgz973ac7rx2vg.webp",
   },
   {
     _id: uuid(),
@@ -125,6 +128,7 @@ export const posts = [
     createdAt: "16 March,2023",
     updatedAt: formatDate(),
     imageId : "https://cdn-icons-png.flaticon.com/128/4140/4140048.png",
+    imageContent:"https://wallpapers.com/images/high/fc-barcelona-desktop-w4zobf00cf51p0vb.webp"
   },
   {
     _id: uuid(),

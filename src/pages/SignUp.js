@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import { useAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 export const SignUp = () => {
     
@@ -14,6 +15,19 @@ export const SignUp = () => {
     })
     const navigate = useNavigate();
 
+    const toastError = (message) => {
+        toast.error(message, {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignUpdata({ ...signUpdata, [name]: value });
@@ -21,6 +35,9 @@ export const SignUp = () => {
 
     const handleSubmit = (data,e) => {
         e.preventDefault(); 
+        if(signUpdata.password !== signUpdata.confirmPassword){
+            return toastError("Passwords do not match")
+        }
         signUpHandler(signUpdata) 
        }
 
@@ -34,6 +51,7 @@ export const SignUp = () => {
         <div className="bg-primary_bg flex justify-center w-screen h-screen items-center text-lg shadow-sm shadow-secondary_bg">
         <form className = "flex flex-col justify-center p-3 bg-secondary_bg items-center text-color rounded-lg "
          onSubmit={(e) => handleSubmit(signUpdata,e)}>
+            <h4 className="p-1 text-2xl">Shario</h4>
           <h4 className="p-1 text-2xl">Sign Up</h4>
           <div className="p-2 flex flex-col justify-center items-center gap-1">
               <label className="self-start">Firstname</label>

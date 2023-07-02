@@ -3,6 +3,7 @@ import { createContext,useContext,useState} from "react";
 import { useAuth } from "./AuthContext";
 import axios from "axios";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const UserContext = createContext(null);
 
@@ -10,6 +11,19 @@ export const UserProvider = ({children}) => {
 
     const [users,setUsers] = useState([]);
     const {loggedUser,setLoggedUser} = useAuth();
+
+    const toastSuccess = (message) => {
+        toast.success(message, {
+            position: "bottom-left",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }
 
     const getUsers = async() => {
         try{
@@ -25,7 +39,7 @@ export const UserProvider = ({children}) => {
         getUsers();
     },[])
 
-    const updateUsers = (data,type) => {
+    const updateUsers = (data,type,val) => {
         if(type === "follow"){
             const {user,followUser} = data;
           const update = users.map((val) => val.username === user.username ?
@@ -33,11 +47,14 @@ export const UserProvider = ({children}) => {
           {...val,followers : followUser.followers} : val);
           setUsers(update);
           setLoggedUser(user);
+          val === "add" ? toastSuccess(`Following ${followUser?.firstName}`)
+          :toastSuccess(`Unfollowed ${followUser?.firstName}`)
         }
         else if(type === "bookmark"){
             setUsers(users.map((user) => user.username === loggedUser.username ? 
             {...user,bookmarks: data.bookmarks} : user));
             setLoggedUser({...loggedUser,bookmarks:data.bookmarks})
+            val === "add" ? toastSuccess("Added to Bookmarks") :toastSuccess("Removed from Bookmarks")
         }
         else if(type === "edit"){
             setUsers(users.map((user) => user.username === loggedUser.username ? 

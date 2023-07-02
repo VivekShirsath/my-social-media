@@ -7,10 +7,24 @@ import { Profile } from './pages/Profile';
 import { SignUp } from './pages/SignUp';
 import Mockman from "mockman-js";
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 
 function App() {
   return (
+    <>
+        <ToastContainer
+    position="bottom-left"
+    autoClose={5000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="light"
+    />
     <div className="flex text-md relative">
      <Routes>
       <Route>
@@ -40,6 +54,7 @@ function App() {
       </Route>
      </Routes>
     </div>
+    </>
   );
 }
 

@@ -86,7 +86,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
         })
         const result = await data.json();
-        updateUsers(result,"bookmark");
+        updateUsers(result,"bookmark","add");
     }
     catch(error){
         console.log(error);
@@ -103,7 +103,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
         })
         const result = await data.json();
-        updateUsers(result,"bookmark");
+        updateUsers(result,"bookmark","remove");
     }
     catch(error){
         console.log(error)
@@ -183,7 +183,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
           );
         const data = await result.json();
-        updateUsers(data,"follow");
+        updateUsers(data,"follow","remove");
     }
     catch(error){
         console.log(error);
@@ -200,7 +200,7 @@ export const likePost = async(token,dispatch,_id) => {
             }
         )
         const data = await result.json();
-        updateUsers(data,"follow");
+        updateUsers(data,"follow","add");
     }
     catch(error){
         console.log(error);

@@ -108,12 +108,12 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                 <h3 className="p-1 w-fit">{createdAt}</h3>
             <p className="p-1">{content}</p>
             {
-                imageContent && <img src={imageContent} alt="post" className='flex justify-center rounded-md'/>
+                imageContent && <img src={imageContent} alt="post" className='flex justify-center rounded-md w-full'/>
             }
             {
                 videoContent && <video className='w-full rounded-md' autoPlay><source src={videoContent}></source></video>
             }
-            <div className="flex p-1 cursor-pointer">
+            <div className="flex p-1 cursor-pointer mt-2">
             <div className='flex w-11'>
             {
                 isPostLiked(likes)? 
