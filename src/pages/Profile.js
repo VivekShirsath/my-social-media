@@ -3,7 +3,7 @@ import load from '../images/loader.svg'
 import { Aside } from "../components/Aside"
 import { Section } from "../components/Section"
 import { getPostByUsername,getUserById,followUser,unfollowUser} from "../services"
-import { useAuth } from "../context/authContext"
+import { useAuth } from "../context/Authcontext"
 import { Card } from "../components/Card"
 import { usePost } from "../context/PostContext"
 import { Modal } from "../components/Modal"

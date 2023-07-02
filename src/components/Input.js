@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { usePost } from "../context/PostContext";
 import { addPosts } from "../services";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/Authcontext";
 
 export const Input = () => {
    const [newPost,setNewPost] = useState({

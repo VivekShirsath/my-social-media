@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/Authcontext";
 
 const getActiveStyle = ({ isActive }) => ({
     color: isActive ? "#d3d3d3" : "",

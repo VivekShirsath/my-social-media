@@ -1,5 +1,5 @@
 import { useState ,useRef,useEffect} from 'react';
-import {useAuth} from '../context/authContext';
+import {useAuth} from '../context/Authcontext';
 import { usePost } from '../context/PostContext';
 import { likePost,disLikePost,bookmarkPost,removeBookmark,editPost,deletePost,unfollowUser,followUser} from '../services';
 import { useUser } from '../context/UserContext';

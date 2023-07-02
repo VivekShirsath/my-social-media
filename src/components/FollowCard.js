@@ -1,6 +1,6 @@
 
 import { followUser } from "../services";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/Authcontext";
 import { useUser } from "../context/UserContext";
 import { NavLink } from "react-router-dom";
 

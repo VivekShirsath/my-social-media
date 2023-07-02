@@ -1,4 +1,4 @@
-import { useAuth } from "../context/authContext"
+import { useAuth } from "../context/Authcontext"
 import { useState} from "react";
 import { useUser } from "../context/UserContext";
 import { usePost } from "../context/PostContext";

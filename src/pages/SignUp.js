@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import { useAuth } from '../context/authContext';
+import { useAuth } from '../context/Authcontext';
 import { toast } from 'react-toastify';
 
 export const SignUp = () => {
