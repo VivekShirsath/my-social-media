@@ -9,7 +9,7 @@ export const PostProvider = ({children}) => {
     const {loggedUser} = useAuth();
     const [state,dispatch] = useReducer(reducer,{
         posts : [],
-        filters : "",
+        filters : "Latest",
     })
 
     useEffect(() => {
