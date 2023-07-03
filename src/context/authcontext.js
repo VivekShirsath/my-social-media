@@ -14,7 +14,7 @@ export const AuthProvider = ({children}) => {
     const toastSuccess = (message) => {
         toast.success(message, {
             position: "bottom-left",
-            autoClose: 5000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -29,7 +29,7 @@ export const AuthProvider = ({children}) => {
     password,
     }) => 
     {
-        console.log(firstName)
+       
     try{
         const {status,data} = await axios.post("/api/auth/signup",{
             username,
@@ -47,7 +47,7 @@ export const AuthProvider = ({children}) => {
             setLoggedUser(data.createdUser);
             toastSuccess(`Welcome ${data.createdUser?.firstName}`)
         }
-       console.log(data)
+    
     }
     catch(error){
         console.log(error);
@@ -69,7 +69,7 @@ export const AuthProvider = ({children}) => {
                 setLoggedUser(data.foundUser);
                 toastSuccess(`Welcome ${data.foundUser?.firstName}`)
             }
-            console.log(data)
+           
         }
         catch(error){
             console.log(error);

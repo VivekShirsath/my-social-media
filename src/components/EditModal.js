@@ -28,9 +28,9 @@ export const EditModal = ({content,imageId,imageContent,videoContent,id,setModal
     }
     const handleView = (e) => { 
         const type = (e.target?.files[0]?.type)
-        console.log(e.target?.files[0]?.type)
+       
         if(e.target?.files[0]?.type === undefined) return;
-        if(type === "image/png"){
+        if(type === "image/png" || type === "image/jpeg" || type === "image/jpg"){
             setEditDetails({...editDetails,imageContent:URL.createObjectURL(e.target.files[0]),videoContent:null})
         }
         else{
@@ -64,7 +64,7 @@ export const EditModal = ({content,imageId,imageContent,videoContent,id,setModal
         : <></>}
         </div>
             <div className="flex gap-3">
-            <label for="edit" className="cursor-pointer" >
+            <label htmlFor="edit" className="cursor-pointer" >
         <input id="edit" type="file" accept="image/*, video/*" className="hidden" onChange={(e) => handleView(e)}/>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-12 text-secondary_bg fill-color">
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />

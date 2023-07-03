@@ -51,7 +51,7 @@ export const SignUp = () => {
         <div className="bg-primary_bg flex justify-center w-screen h-screen items-center text-lg shadow-sm shadow-secondary_bg">
         <form className = "flex flex-col justify-center p-3 bg-secondary_bg items-center text-color rounded-lg "
          onSubmit={(e) => handleSubmit(signUpdata,e)}>
-            <h4 className="p-1 text-2xl">Shario</h4>
+            <h4 className="p-1 text-2xl  font-bold">Shario</h4>
           <h4 className="p-1 text-2xl">Sign Up</h4>
           <div className="p-2 flex flex-col justify-center items-center gap-1">
               <label className="self-start">Firstname</label>

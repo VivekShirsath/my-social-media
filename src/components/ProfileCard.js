@@ -10,7 +10,7 @@ export const ProfileCard = ({currUser,loading}) => {
     const handleModal = () => {
         setModalOpen(true);
     }
-    console.log(loading,currUser)
+   
     return(
         <>
         <div className="flex justify-between text-color p-3 items-center w-full">

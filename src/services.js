@@ -31,7 +31,7 @@ export const getPosts = async(dispatch,setisLoading,loading) => {
             }
         },
         )
-        console.log(data.posts);
+       
         dispatch({type:"Add_Post",payload:data.posts});
     }
     catch(error){
@@ -50,7 +50,7 @@ export const likePost = async(token,dispatch,_id) => {
           }
         )
         const result = await data.json();
-        console.log(result);
+       
        dispatch({type:"Like_Post",payload:result.posts})
      }
     catch(error){
@@ -111,7 +111,7 @@ export const likePost = async(token,dispatch,_id) => {
  }
 
  export const editImagePost = async(token,dispatch,id,data) => {
-    console.log(id,data);
+   
     try{
         const result = await axios.post(`/api/posts/edit/${id}`,
 
@@ -133,7 +133,7 @@ export const likePost = async(token,dispatch,_id) => {
  }
 
  export const editPost = async(token,dispatch,id,data,image,video) => {
-    console.log(id,data);
+    
     try{
         const result = await axios.post(`/api/posts/edit/${id}`,
 
@@ -228,7 +228,7 @@ export const likePost = async(token,dispatch,_id) => {
         const result = await fetch(`/api/posts/user/${username}`)
         const data = await result.json();
         setlogUserPosts(data.posts);
-        console.log(data.posts);
+        
     }
     catch(error){
         console.log(error);
@@ -236,7 +236,7 @@ export const likePost = async(token,dispatch,_id) => {
  }
 
  export const getUserById = async(id,setcurrUser,setisLoading) => {
-    console.log(id)
+    
     try{
       const result = await fetch(`/api/users/${id}`)
       const data = await result.json();

@@ -32,11 +32,10 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
             setActiveId(null);
         }
         else{
-            console.log("K")
             setActiveId(id);
         }
     }
-    console.log(activeId);
+   
 
     const handleOutsideClick = (event) => {
         if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -143,7 +142,8 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
            }
             </div>
             </div>
-            {isModalOpen && <EditModal content={content} imageId={imageId} imageContent={imageContent} videoContent={videoContent} id={_id} setModalOpen = {setModalOpen}/>}
+            {isModalOpen && <EditModal content={content} imageId={imageId} imageContent={imageContent} videoContent={videoContent} id={_id} setModalOpen = {setModalOpen}
+            type="edit"/>}
           </>  
         </div>
     )
