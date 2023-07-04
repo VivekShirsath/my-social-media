@@ -28,7 +28,6 @@ export const Post = ({type}) => {
             :
             type === "explore" ? 
             <>
-            <h4 className="text-2xl text-color p-4 text-center sticky top-0 backdrop-blur-sm z-50 border-b-2">Explore</h4>
              {posts?.map((post,index) => {
                 if(posts.length === index+1){
                   return  <Card {...post} key={post._id}/>

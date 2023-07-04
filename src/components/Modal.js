@@ -1,8 +1,7 @@
 import { useAuth } from "../context/Authcontext"
-import { useState} from "react";
+import { useState,useRef,useEffect} from "react";
 import { useUser } from "../context/UserContext";
 import { usePost } from "../context/PostContext";
-import {NavLink} from "react-router-dom"
 import { editUser,editImagePost } from "../services";
 
 
@@ -16,7 +15,8 @@ export const Modal = ({modalOpen,setModalOpen}) => {
         bio : loggedUser.bio,
         github : loggedUser.github,
         }
-    )
+    );
+    const modalRef = useRef(null);
 
     const handleSave = async(e) => {
        e.preventDefault();
@@ -37,11 +37,21 @@ export const Modal = ({modalOpen,setModalOpen}) => {
       setModalOpen(false);
     }
 
+    const handleOutsideClick = (event) => {
+      event.stopPropagation()
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setModalOpen(false);
+      }
+    };
+
+   
+   
     return(
         <div className="flex justify-center items-center min-h-screen
-         bg-primary_bg/[.30] fixed top-0 left-0 right-0 z-20">
-        <form className="bg-black z-auto text-color bg-secondary_bg p-3 w-3/4 md:w-fit
-        flex flex-col gap-3 justify-center items-center rounded-md shadow-md shadow-primary_bg ">
+         bg-primary_bg/[.30] fixed top-0 left-0 right-0 z-20" onClick={(e) => handleOutsideClick(e)}>
+       <form className="bg-black z-auto text-color bg-secondary_bg p-3 w-3/4 md:w-fit
+        flex flex-col gap-3 justify-center items-center rounded-md shadow-md shadow-primary_bg 
+        " ref={modalRef}>
           <div className="flex gap-3 items-center">
           <img src={editData?.imageId} alt="avatar"  className="w-12 self-start"/>
           <h3>Edit Profile</h3>

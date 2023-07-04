@@ -242,7 +242,7 @@ export const likePost = async(token,dispatch,_id) => {
       const data = await result.json();
       setcurrUser(data);
       setisLoading(false);
-      console.log(data);
+      
     }
     catch(error){
        console.log(error);
