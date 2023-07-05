@@ -60,8 +60,10 @@ export const EditModal = ({content,imageId,imageContent,videoContent,id,setModal
                 editDetails?.imageContent && <img src={editDetails.imageContent} alt="post" className='flex justify-center rounded-md items-center relative md:w-2/4 md:h-2/4 md:self-center md:ml-auto md:mr-auto'/>
             }
             {
-                editDetails?.videoContent && <video className='flex justify-center rounded-md items-center relative md:w-3/4 md:h-2/4 md:self-center md:ml-auto md:mr-auto' autoPlay>
-                    <source src={editDetails.videoContent}></source></video>
+                editDetails?.videoContent && 
+                <video className='flex justify-center rounded-md items-center relative md:w-3/4 md:h-2/4 md:self-center md:ml-auto md:mr-auto'
+                 autoPlay src={editDetails.videoContent}>
+                    </video>
             }
          {editDetails.imageContent || editDetails.videoContent ?
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="black" className="w-10 h-10 absolute top-3 

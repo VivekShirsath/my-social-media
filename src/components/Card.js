@@ -109,8 +109,8 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                 imageContent && <img src={imageContent} alt="post" className='flex justify-center rounded-md w-full'/>
             }
             {
-                videoContent && <video className='w-full rounded-md' autoPlay>
-                    <source src={videoContent}></source></video>
+                videoContent && <video className='w-full rounded-md' autoPlay src={videoContent}>
+                    </video>
             }
             <div className="flex p-1 cursor-pointer mt-2">
             <div className='flex w-11'>
