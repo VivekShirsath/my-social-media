@@ -1,4 +1,18 @@
 import axios from "axios";
+import { toast } from "react-toastify"
+
+const toastSuccess = (message) => {
+    toast.success(message, {
+        position: "bottom-left",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+}
 
 export const getPosts = async(dispatch,setisLoading,loading) => {
     try{
@@ -31,7 +45,7 @@ export const getPosts = async(dispatch,setisLoading,loading) => {
             }
         },
         )
-       
+        toastSuccess("Post Created")
         dispatch({type:"Add_Post",payload:data.posts});
     }
     catch(error){
@@ -264,6 +278,7 @@ export const likePost = async(token,dispatch,_id) => {
             authorization: token,
         }
     })
+    toastSuccess("Profile Details Updated")
     updateUsers(result.data.user,"edit");   
     }
     catch(error){

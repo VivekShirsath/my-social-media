@@ -24,12 +24,15 @@ export const Filter = () => {
         </svg>
        {
          showOptions && 
-         <div className="absolute bottom-0 right-6 flex flex-col bg-primary_bg border-color rounded-sm p-2 text-secondary_bg shadow-primary_bg shadow-sm font-semibold z-auto">
+         <div className="absolute bottom-1 right-5 z-100 flex flex-col bg-primary_bg border-color rounded-sm p-2 text-secondary_bg shadow-primary_bg shadow-sm font-semibold z-auto">
             <button onClick={() => handleFilters("Trending")}>
                 Trending
                 </button>
-                <button onClick={() => handleFilters("Latest")}>
+                <button onClick={() => handleFilters("Latest")} className="z-100">
                 Latest
+                </button>
+                <button onClick={() => handleFilters("Oldest")}>
+                Oldest
                 </button>
                
         </div>

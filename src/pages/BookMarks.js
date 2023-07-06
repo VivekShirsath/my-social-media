@@ -23,7 +23,7 @@ export const BookMarks = () => {
     return(
         <>
         <Aside/>
-        <div className="flex flex-col md:w-2/4 bg-secondary_bg w-full h-screen">
+        <div className="flex flex-col md:w-2/4 bg-secondary_bg w-full">
         <h4 className="text-2xl text-color p-4 text-center sticky top-0 backdrop-blur-sm z-50 border-b-2">BookMarks</h4>
      {   loading ? <img src={load} className="w-20 bg-secondary_bg text-center mx-auto" alt="loader"/>
       :   bookMarkPosts.length > 0 ?

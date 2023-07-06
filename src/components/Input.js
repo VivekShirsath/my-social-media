@@ -38,7 +38,7 @@ export const Input = () => {
         <>
         <h4 className="text-2xl text-color p-4 text-center sticky top-0 backdrop-blur-sm z-50">Home</h4>
         <div className="flex gap-3 bg-primary_bg border-secondary_bg border-2">
-        <img src={loggedUser?.imageId} alt="avatar" className="w-12 self-start mt-4"/>
+        <img src={loggedUser?.imageId} alt="avatar" className="w-12 self-start mt-4 ml-4"/>
         <form className="flex flex-col w-full">
         <input type="text" className = "p-4 border-0 outline-none text-secondary_bg placeholder-black bg-primary_bg text-lg"
         placeholder="What's happening?" 
@@ -68,7 +68,7 @@ export const Input = () => {
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
         </svg>
         </label>
-        <button className= "bg-cta_color text-secondary_bg rounded-md p-2 font-semibold"
+        <button className= "bg-cta_color text-secondary_bg rounded-md p-3 font-semibold"
         disabled= {newPost?.textContent=== "" && newPost.imageContent === null && newPost.videoContent === null}
         onClick = {(e) => handleAdd(e)}>
             Post</button>

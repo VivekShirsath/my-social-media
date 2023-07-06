@@ -70,7 +70,7 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
     
     
     return(
-        <div className="text-color flex  p-4 border-b-2 relative" >
+        <div className="text-color flex  p-4 border-b-2 relative mb-6 md:mb-0" >
             <>
             <NavLink to = {"/profile/"+ username}>
             <div className="flex justify-around items-center">
@@ -80,7 +80,11 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
              </NavLink>
              <div className="flex-col ml-1 p-1 w-full">
                 <div className='flex justify-between w-full '>
+                <div className='flex gap-1 items-center'>
                 <h3 className="inline-block">{fullName}</h3>
+                <p className="inline-block opacity-70">@{username}</p>
+               
+                </div>
                 <div className='relative'>
                 <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 text-color fill-color self-end cursor-pointer"
                 onClick={(e) => handleClick(e,_id)}>
@@ -102,8 +106,7 @@ export const Card = ({content,username,createdAt,_id,firstName,lastName,likes,im
                 }
                 </div>
                 </div>
-                <p className="inline-block">@{username}</p>
-                <h3 className="p-1 w-fit">{createdAt}</h3>
+                <h3 className="p-1 w-fit opacity-70">{createdAt}</h3>
             <p className="p-1">{content}</p>
             {
                 imageContent && <img src={imageContent} alt="post" className='flex justify-center rounded-md w-full'/>
