@@ -1,7 +1,5 @@
 import { NavLink } from "react-router-dom"
 import { useAuth } from "../context/Authcontext";
-import { useState } from "react";
-import { EditModal } from "./EditModal";
 
 const getActiveStyle = ({ isActive }) => ({
     color: isActive ? "#d3d3d3" : "",
@@ -32,7 +30,10 @@ export const Aside = () => {
             <h4 className="hover:bg-secondary_bg hover:text-primary_bg rounded-sm p-1 md:rounded-full self-center hidden md:flex">Home</h4></NavLink>
 
             <NavLink  style={getActiveStyle}  to ="/explore" className="flex gap-1 items-center hover:bg-secondary_bg hover:text-primary_bg md:rounded-full p-1">
-            <img  src={`https://img.icons8.com/ios/50/color/compass--v1.png`} alt="compass--v1" className="w-6 h-6 bottom-1"/>
+            {/* <img  src={`https://img.icons8.com/ios/50/color/compass--v1.png`} alt="compass--v1" className="w-6 h-6 bottom-1"/>
+             */}
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path  strokeLinecap="round" strokeLinejoin="round"d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/></svg>
                 <h4 className="hover:bg-secondary_bg hover:text-primary_bg rounded-sm p-1 md:rounded-full hidden md:flex">
                     Explore
                     </h4></NavLink>

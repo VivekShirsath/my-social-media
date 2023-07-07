@@ -26,7 +26,6 @@ export const getPosts = async(dispatch,setisLoading,loading) => {
 }
 
  export const addPosts = async(text,image,video,token,dispatch,firstName,lastName,imageId) => {
-  console.log("inside")
     try{
         const {data} = await axios.post("/api/posts",
         {

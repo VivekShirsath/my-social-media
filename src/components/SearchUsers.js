@@ -16,7 +16,7 @@ export const SearchUsers = () => {
 
     const findUser = (val) => {
        const user = users.filter(({firstName,lastName,username}) => firstName.toLowerCase().includes(val.toLowerCase()) || lastName.toLowerCase().includes(val.toLowerCase()) || username.toLowerCase().includes(val.toLowerCase()))
-       console.log(user);
+      
        setSearchUser(user);
     }
     

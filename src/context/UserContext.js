@@ -62,7 +62,6 @@ export const UserProvider = ({children}) => {
             setLoggedUser({...data})
         }
     }
-     console.log(users);
     return(
         <UserContext.Provider value = {{getUsers,users,setUsers,updateUsers}}>
             {children}

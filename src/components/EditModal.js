@@ -5,7 +5,7 @@ import { usePost } from "../context/PostContext"
 import { getPosts } from "../services"
 
 export const EditModal = ({content,imageId,imageContent,videoContent,id,setModalOpen}) => {
-    const {loggedUser,token} = useAuth();
+    const {token} = useAuth();
     const {dispatch} = usePost();
 
     const [editDetails,setEditDetails] = useState({
