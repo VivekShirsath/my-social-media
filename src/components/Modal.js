@@ -22,9 +22,7 @@ export const Modal = ({modalOpen,setModalOpen}) => {
        e.preventDefault();
        editUser(token,editData,updateUsers)
        const loggedUserPost = posts?.filter((post) => post.username === loggedUser.username)
-       for(let i = 0;i<loggedUserPost.length;i++){
-        editImagePost(token,dispatch,loggedUserPost[i]._id,editData.imageId)
-       }
+      loggedUserPost.map((post) => editImagePost(token,dispatch,post._id,editData.imageId) )
        setModalOpen(false);
     }
     
