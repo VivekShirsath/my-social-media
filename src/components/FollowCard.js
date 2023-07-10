@@ -18,7 +18,7 @@ export const FollowCard = ({username,firstName,lastName,imageId,_id}) => {
         <NavLink to = {"/profile/" + username}>
             <div className="flex justify-between">
                 <img src={imageId} alt="avatar" className="w-11"/>
-                <div className="flex flex-col ml-2">
+                <div className="flex flex-col ml-1">
                 <h3>{firstName} {lastName}</h3>
                 <p>@{username}</p>
                 </div>

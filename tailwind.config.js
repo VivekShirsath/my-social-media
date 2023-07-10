@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif']
+      },
+    },
     colors: {
       primary_bg: '#d3d3d3',
       secondary_bg: '#383838',

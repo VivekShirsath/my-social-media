@@ -25,7 +25,7 @@ function App() {
     pauseOnHover
     theme="light"
     />
-    <div className="flex text-md relative">
+    <div className="flex text-md relative font-inter">
      <Routes>
       <Route>
         <Route path = "/" element={

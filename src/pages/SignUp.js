@@ -125,7 +125,7 @@ export const SignUp = () => {
               className="p-1 rounded-md  outline-cta_color text-secondary_bg" 
               type={isVisible.confirmPassword? "text" : "password"}
               name="confirmPassword"
-              placeholder='Please enter Password'
+              placeholder='Please Confirm Password'
               onChange={(e) => handleChange(e)}
               value={signUpdata.confirmPassword}
               required
